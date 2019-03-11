@@ -11,12 +11,12 @@ add_subdirectory(ITT)
 add_subdirectory(SPIRV)
 
 # Nowide library
-set(NOWIDE_BUILD_STATIC ON)
-set(NOWIDE_BUILD_SHARED OFF)
-set(NOWIDE_BUILD_TESTS OFF)
-set(NOWIDE_BUILD_DOC_HTML OFF)
-set(NOWIDE_BUILD_DOC_CHM OFF)
-set(NOWIDE_BUILD_DOC_TEX OFF)
+set(NOWIDE_BUILD_STATIC   ON  CACHE BOOL "EnableNowide static build")
+set(NOWIDE_BUILD_SHARED   OFF CACHE BOOL "Disable Nowide shared build")
+set(NOWIDE_BUILD_TESTS    OFF CACHE BOOL "Disable Nowide tests build")
+set(NOWIDE_BUILD_DOC_HTML OFF CACHE BOOL "Disable Nowide HTML doc build")
+set(NOWIDE_BUILD_DOC_CHM  OFF CACHE BOOL "Disable Nowide CHM doc build")
+set(NOWIDE_BUILD_DOC_TEX  OFF CACHE BOOL "Disable Nowide TEX doc build")
 add_subdirectory(Nowide)
 
 # Image loader library: STB or OIIO
