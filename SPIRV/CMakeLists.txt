@@ -1,0 +1,26 @@
+set(TARGET SPIRV)
+
+include(ExternalProject)
+
+if (WIN32)
+
+    set(BINARIES_MD5 f6ba4d008cd68e1568e2c9479cd20b88)
+    set(BINARIES_DIR ${CMAKE_CURRENT_SOURCE_DIR}/binaries/Windows)
+
+elseif(APPLE)
+
+    set(BINARIES_MD5 ecbdc2722b44b071d6a0a9bba45db4bb)
+    set(BINARIES_DIR ${CMAKE_CURRENT_SOURCE_DIR}/binaries/MacOS)
+
+endif()
+
+ExternalProject_Add(${TARGET}
+    URL ${BINARIES_DIR}.zip
+    URL_MD5 ${BINARIES_MD5}
+    SOURCE_DIR ${BINARIES_DIR}
+    BUILD_IN_SOURCE TRUE
+    EXCLUDE_FROM_ALL TRUE
+    CONFIGURE_COMMAND ""
+    BUILD_COMMAND ""
+    STEP_TARGETS build
+)
