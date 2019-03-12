@@ -11,7 +11,7 @@ add_subdirectory(ITT)
 add_subdirectory(SPIRV)
 
 # Nowide library
-set(NOWIDE_BUILD_STATIC   ON  CACHE BOOL "EnableNowide static build")
+set(NOWIDE_BUILD_STATIC   ON  CACHE BOOL "Enable Nowide static build")
 set(NOWIDE_BUILD_SHARED   OFF CACHE BOOL "Disable Nowide shared build")
 set(NOWIDE_BUILD_TESTS    OFF CACHE BOOL "Disable Nowide tests build")
 set(NOWIDE_BUILD_DOC_HTML OFF CACHE BOOL "Disable Nowide HTML doc build")
