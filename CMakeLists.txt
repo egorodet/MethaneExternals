@@ -20,6 +20,11 @@ set(NOWIDE_BUILD_DOC_CHM  OFF CACHE BOOL "Disable Nowide CHM doc build")
 set(NOWIDE_BUILD_DOC_TEX  OFF CACHE BOOL "Disable Nowide TEX doc build")
 add_subdirectory(Nowide)
 
+# CxxOpts library
+set(CXXOPTS_BUILD_EXAMPLES OFF CACHE BOOL "Disable CxxOpts examples build")
+set(CXXOPTS_BUILD_TESTS    OFF CACHE BOOL "Disable CxxOpts tests build")
+add_subdirectory(CxxOpts)
+
 # Image loader library: STB or OIIO
 if (METHANE_USE_OPEN_IMAGE_IO)
     add_subdirectory(OpenImageIO)

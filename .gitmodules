@@ -19,3 +19,6 @@
 [submodule "DirectXLibraries"]
 	path = DirectXLibraries
 	url = https://github.com/egorodet/DirectXLibraries.git
+[submodule "CxxOpts"]
+	path = CxxOpts
+	url = https://github.com/egorodet/CxxOpts.git
