@@ -11,4 +11,5 @@
 - [ITT](https://github.com/intel/IntelSEAPI/tree/master/ittnotify) - Intel Instrumentation and Tracing API with helpers header.
 - [STB](https://github.com/nothings/stb) - stb_image header is used for loading JPEG images to textures
 - [OpenImageIO](https://github.com/OpenImageIO/oiio) - additional library used for loading of wide range of image formats via native loaders (optional dependency)
+- [Sonar Scanner](https://sonarcloud.io) - scanner binaries for static code analysis via [Scanner Cloud](https://sonarcloud.io/dashboard?id=egorodet_MethaneKit) web-service
   - [USD Build Club](https://github.com/vfxpro99/usd-build-club) - used for [Open Image IO build scripts](OpenImageIO/build) with some modifications
