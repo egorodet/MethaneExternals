@@ -9,6 +9,7 @@ add_subdirectory(CML/cml)
 add_subdirectory(Catch2/single_include)
 add_subdirectory(ITT)
 add_subdirectory(SPIRV)
+add_subdirectory(PerlinNoise)
 
 # Nowide library
 set(NOWIDE_BUILD_STATIC   ON  CACHE BOOL "Enable Nowide static build")
