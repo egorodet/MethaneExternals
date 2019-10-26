@@ -216,8 +216,8 @@ float sdnoise1( float x, float *dnoise_dx)
  * F2 = 0.5*(sqrt(3.0)-1.0)
  * G2 = (3.0-Math.sqrt(3.0))/6.0
  */
-#define F2 0.366025403
-#define G2 0.211324865
+#define F2 0.366025403f
+#define G2 0.211324865f
 
 /** 2D simplex noise with derivatives.
  * If the last two arguments are not null, the analytic derivative
@@ -328,8 +328,8 @@ float sdnoise2( float x, float y, float *dnoise_dx, float *dnoise_dy )
 /* Skewing factors for 3D simplex grid:
  * F3 = 1/3
  * G3 = 1/6 */
-#define F3 0.333333333
-#define G3 0.166666667
+#define F3 0.333333333f
+#define G3 0.166666667f
 
 
 /** 3D simplex noise with derivatives.
@@ -492,8 +492,8 @@ float sdnoise3( float x, float y, float z,
 }
 
 // The skewing and unskewing factors are hairy again for the 4D case
-#define F4 0.309016994 // F4 = (Math.sqrt(5.0)-1.0)/4.0
-#define G4 0.138196601 // G4 = (5.0-Math.sqrt(5.0))/20.0
+#define F4 0.309016994f // F4 = (Math.sqrt(5.0)-1.0)/4.0
+#define G4 0.138196601f // G4 = (5.0-Math.sqrt(5.0))/20.0
 
 /** 4D simplex noise with derivatives.
  * If the last four arguments are not null, the analytic derivative
