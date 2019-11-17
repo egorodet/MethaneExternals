@@ -36,4 +36,9 @@ endif()
 # Platform dependent libraries
 if (WIN32)
     add_subdirectory(DirectXLibraries/D3DX12)
+	
+	# DirectXTex library
+	set(DIRECTXTEX_BUILD_TOOLS        OFF CACHE BOOL "Disable DirectXTex tools build")
+	set(DIRECTXTEX_STANDALONE_ENABLED OFF CACHE BOOL "Disable DirectXTex standalone build")
+	add_subdirectory(DirectXTex)
 endif()

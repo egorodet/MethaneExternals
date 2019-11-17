@@ -7,6 +7,7 @@
 - [CML: The Configurable Math Library](https://github.com/demianmnave/CML) - header only template vector math used in sample apps
 - [CxxOpts](https://github.com/jarro2783/cxxopts) - header only command line options parser library
 - [D3DX12](https://github.com/Microsoft/DirectX-Graphics-Samples/tree/master/Libraries/D3DX12) - DirectX 12 helpers library
+- [DirectXTex](https://github.com/microsoft/DirectXTex) - DirectX texture processing library
 - [Catch2](https://github.com/catchorg/Catch2) - header only unit-testing framework
 - [ITT](https://github.com/intel/IntelSEAPI/tree/master/ittnotify) - Intel Instrumentation and Tracing API with helpers header.
 - [STB](https://github.com/nothings/stb) - stb_image header is used for loading JPEG images to textures

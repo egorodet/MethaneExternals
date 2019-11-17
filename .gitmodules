@@ -22,3 +22,6 @@
 [submodule "CxxOpts"]
 	path = CxxOpts
 	url = https://github.com/egorodet/CxxOpts.git
+[submodule "DirectXTex"]
+	path = DirectXTex
+	url = https://github.com/egorodet/DirectXTex.git
