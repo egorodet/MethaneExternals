@@ -10,6 +10,7 @@ add_subdirectory(Catch2/single_include)
 add_subdirectory(ITT)
 add_subdirectory(SPIRV)
 add_subdirectory(PerlinNoise)
+add_subdirectory(CLI11)
 
 # Nowide library
 set(NOWIDE_BUILD_STATIC   ON  CACHE BOOL "Enable Nowide static build")
@@ -20,11 +21,6 @@ set(NOWIDE_BUILD_DOC_HTML OFF CACHE BOOL "Disable Nowide HTML doc build")
 set(NOWIDE_BUILD_DOC_CHM  OFF CACHE BOOL "Disable Nowide CHM doc build")
 set(NOWIDE_BUILD_DOC_TEX  OFF CACHE BOOL "Disable Nowide TEX doc build")
 add_subdirectory(Nowide)
-
-# CxxOpts library
-set(CXXOPTS_BUILD_EXAMPLES OFF CACHE BOOL "Disable CxxOpts examples build")
-set(CXXOPTS_BUILD_TESTS    OFF CACHE BOOL "Disable CxxOpts tests build")
-add_subdirectory(CxxOpts)
 
 # Image loader library: STB or OIIO
 if (METHANE_USE_OPEN_IMAGE_IO)
