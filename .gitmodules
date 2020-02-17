@@ -10,9 +10,6 @@
 [submodule "Nowide"]
 	path = Nowide
 	url = https://github.com/egorodet/Nowide.git
-[submodule "ITT"]
-	path = ITT
-	url = https://github.com/egorodet/ITT.git
 [submodule "STB"]
 	path = STB
 	url = https://github.com/egorodet/STB.git
@@ -25,3 +22,6 @@
 [submodule "CLI11"]
 	path = CLI11
 	url = https://github.com/egorodet/CLI11.git
+[submodule "IttApi"]
+	path = IttApi
+	url = https://github.com/egorodet/IttApi.git

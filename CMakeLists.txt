@@ -7,7 +7,7 @@ list(APPEND CMAKE_MODULE_PATH
 
 add_subdirectory(CML/cml)
 add_subdirectory(Catch2/single_include)
-add_subdirectory(ITT)
+add_subdirectory(IttApi)
 add_subdirectory(SPIRV)
 add_subdirectory(PerlinNoise)
 add_subdirectory(CLI11)
