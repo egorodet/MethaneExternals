@@ -36,5 +36,7 @@ if (WIN32)
 	# DirectXTex library
 	set(DIRECTXTEX_BUILD_TOOLS        OFF CACHE BOOL "Disable DirectXTex tools build")
 	set(DIRECTXTEX_STANDALONE_ENABLED OFF CACHE BOOL "Disable DirectXTex standalone build")
+    set(BUILD_DX11                    OFF CACHE BOOL "Disabled DirectXTex DirectX11 Runtime support")
+    set(BUILD_DX12                    ON  CACHE BOOL "Enabled DirectXTex DirectX12 Runtime support")
 	add_subdirectory(DirectXTex)
 endif()
