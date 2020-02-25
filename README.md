@@ -1,7 +1,8 @@
 # Methane Externals
 [Methane Kit](https://github.com/egorodet/MethaneKit) external libraries and tools in linked repositories or prebuilt binaries and headers:
-- [GLSLang](https://github.com/KhronosGroup/glslang) - used to compile HLSL to SPIRV bytecode (prebuilt command line executable)
-- [SPIRV-Cross](https://github.com/KhronosGroup/SPIRV-Cross) - used to translate SPIRV bytecode to Metal shaders (used as prebuilt command line executable)
+- [DirectXCompiler](https://github.com/microsoft/DirectXShaderCompiler) - used to compiler HLSL to DXIL on Windows and to SPIRV on MacOS (prebuilt command line executables)
+- [GLSLang](https://github.com/KhronosGroup/glslang) - was previously used to compile HLSL to SPIRV bytecode on MacOS, now it is deprecated (prebuilt command line executable)
+- [SPIRV-Cross](https://github.com/KhronosGroup/SPIRV-Cross) - used to trsanslate SPIRV bytecode to Metal shaders (prebuilt command line executable)
 - [Nowide Standalone](https://github.com/nephatrine/nowide-standalone) - used for short-char to wide-char string conversions on Windows
 - [CMRC](https://github.com/vector-of-bool/cmrc) - used for embedding shaders and textures into application binary
 - [CML: The Configurable Math Library](https://github.com/demianmnave/CML) - header only template vector math used in sample apps
