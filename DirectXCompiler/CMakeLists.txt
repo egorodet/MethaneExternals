@@ -29,19 +29,23 @@ elseif(APPLE)
 
 endif()
 
-ExternalProject_Add(${TARGET}Unpack
-    URL ${BINARIES_DIR}.zip
-    URL_MD5 ${BINARIES_MD5}
-    SOURCE_DIR ${BINARIES_DIR}
-    BUILD_BYPRODUCTS ${LIBRARIES}
-    BUILD_IN_SOURCE TRUE
-    EXCLUDE_FROM_ALL TRUE
-    CONFIGURE_COMMAND ""
-    BUILD_COMMAND ""
-    STEP_TARGETS build
-)
+if(WIN32 OR APPLE)
 
-add_dependencies(${TARGET} ${TARGET}Unpack-build)
+    ExternalProject_Add(${TARGET}Unpack
+        URL ${BINARIES_DIR}.zip
+        URL_MD5 ${BINARIES_MD5}
+        SOURCE_DIR ${BINARIES_DIR}
+        BUILD_BYPRODUCTS ${LIBRARIES}
+        BUILD_IN_SOURCE TRUE
+        EXCLUDE_FROM_ALL TRUE
+        CONFIGURE_COMMAND ""
+        BUILD_COMMAND ""
+        STEP_TARGETS build
+    )
+
+    add_dependencies(${TARGET} ${TARGET}Unpack-build)
+
+endif()
 
 set_target_properties(${TARGET} PROPERTIES PREREQUISITE_BINARIES "${PREREQUISITE_BINARIES_LIST}")
 
