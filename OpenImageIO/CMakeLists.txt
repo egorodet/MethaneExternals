@@ -1,6 +1,6 @@
 set(TARGET OpenImageIO)
 
-include(Methane)
+include(MethaneModules)
 include(ExternalProject)
 
 get_platform_dir()
