@@ -1,0 +1,2 @@
+This module provides functions to bridge from d3dcompiler_47 to dxcompiler.
+It is provided as a part of open-source [DirectXShaderCompiler](https://github.com/microsoft/DirectXShaderCompiler/blob/master/tools/clang/tools/d3dcomp/d3dcomp.cpp)
