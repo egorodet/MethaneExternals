@@ -155,7 +155,7 @@ HRESULT WINAPI D3DCompile(LPCVOID pSrcData, SIZE_T SrcDataSize,
     *ppErrorMsgs = nullptr;
 
   IFR(CreateLibrary(&library));
-  IFR(library->CreateBlobWithEncodingFromPinned((LPBYTE)pSrcData, SrcDataSize,
+  IFR(library->CreateBlobWithEncodingFromPinned((LPBYTE)pSrcData, static_cast<UINT32>(SrcDataSize),
                                                 CP_ACP, &source));
 
   // Until we actually wrap the include handler, fail if there's a user-supplied
@@ -242,7 +242,7 @@ HRESULT WINAPI D3DDisassemble(_In_reads_bytes_(SrcDataSize) LPCVOID pSrcData,
   UNREFERENCED_PARAMETER(Flags);
 
   IFR(CreateLibrary(&library));
-  IFR(library->CreateBlobWithEncodingFromPinned((LPBYTE)pSrcData, SrcDataSize,
+  IFR(library->CreateBlobWithEncodingFromPinned((LPBYTE)pSrcData, static_cast<UINT32>(SrcDataSize),
                                                 CP_ACP, &source));
   IFR(CreateCompiler(&compiler));
   IFR(compiler->Disassemble(source, &disassemblyText));
@@ -262,7 +262,7 @@ HRESULT WINAPI D3DReflect(_In_reads_bytes_(SrcDataSize) LPCVOID pSrcData,
   *ppReflector = nullptr;
 
   IFR(CreateLibrary(&library));
-  IFR(library->CreateBlobWithEncodingOnHeapCopy((LPBYTE)pSrcData, SrcDataSize,
+  IFR(library->CreateBlobWithEncodingOnHeapCopy((LPBYTE)pSrcData, static_cast<UINT32>(SrcDataSize),
                                                 CP_ACP, &source));
   IFR(CreateContainerReflection(&reflection));
   IFR(reflection->Load(source));
@@ -358,7 +358,7 @@ HRESULT WINAPI D3DPreprocess(_In_reads_bytes_(SrcDataSize) LPCVOID pSrcData,
     *ppErrorMsgs = nullptr;
 
   IFR(CreateLibrary(&library));
-  IFR(library->CreateBlobWithEncodingFromPinned((LPBYTE)pSrcData, SrcDataSize,
+  IFR(library->CreateBlobWithEncodingFromPinned((LPBYTE)pSrcData, static_cast<UINT32>(SrcDataSize),
                                                 CP_ACP, &source));
 
   // Until we actually wrap the include handler, fail if there's a user-supplied

@@ -22,9 +22,9 @@ set(BIN_DIR ${BINARIES_DIR}/bin)
 if(WIN32)
 
     if(${WIN_ARCH} STREQUAL "x64")
-       set(BINARIES_MD5 4ec68ef2f461b514e69b4dbdcb472174)
+       set(BINARIES_MD5 cb428de9a084987323376dee63611a56)
     elseif(${WIN_ARCH} STREQUAL "x86")
-       set(BINARIES_MD5 98fb6e42c9c8fd375b49a84e66a37065)
+       set(BINARIES_MD5 24df1b6f9e6403d320c34b3ddc04b9f8)
     endif()
 
     set(LIBRARIES

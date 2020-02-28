@@ -7,12 +7,17 @@ list(APPEND CMAKE_MODULE_PATH
 
 add_subdirectory(CML/cml)
 add_subdirectory(Catch2/single_include)
-add_subdirectory(IttApi)
 add_subdirectory(SPIRV)
 add_subdirectory(DirectXCompiler)
 add_subdirectory(D3DCompilerToDXC)
 add_subdirectory(PerlinNoise)
 add_subdirectory(CLI11)
+
+add_subdirectory(IttApi)
+set_target_properties(ittnotify
+    PROPERTIES
+    FOLDER Externals
+)
 
 # Nowide library
 set(NOWIDE_BUILD_STATIC   ON  CACHE BOOL "Enable Nowide static build")
@@ -41,4 +46,8 @@ if (WIN32)
     set(BUILD_DX11                    OFF CACHE BOOL "Disabled DirectXTex DirectX11 Runtime support")
     set(BUILD_DX12                    ON  CACHE BOOL "Enabled DirectXTex DirectX12 Runtime support")
 	add_subdirectory(DirectXTex)
+    set_target_properties(DirectXTex
+        PROPERTIES
+        FOLDER Externals
+    )
 endif()
