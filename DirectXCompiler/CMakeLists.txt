@@ -10,18 +10,27 @@ add_library(${TARGET} STATIC
 )
 
 set(BINARIES_DIR ${CMAKE_CURRENT_SOURCE_DIR}/binaries/${PLATFORM_DIR})
+
+if(WIN32)
+    get_target_arch(WIN_ARCH)
+    set(BINARIES_DIR ${BINARIES_DIR}-${WIN_ARCH})
+endif()
+
 set(LIB_DIR ${BINARIES_DIR}/lib)
 set(BIN_DIR ${BINARIES_DIR}/bin)
 
 if(WIN32)
 
-    set(BINARIES_MD5 95576ef7923bf3e4b5ee6f14359ee830)
+    if(${WIN_ARCH} STREQUAL "x64")
+       set(BINARIES_MD5 4ec68ef2f461b514e69b4dbdcb472174)
+    elseif(${WIN_ARCH} STREQUAL "x86")
+       set(BINARIES_MD5 98fb6e42c9c8fd375b49a84e66a37065)
+    endif()
+
     set(LIBRARIES
-        "${LIB_DIR}/dxcompiler.lib"
-        "${LIB_DIR}/d3dcompiler_dxc_bridge.lib")
+        "${LIB_DIR}/dxcompiler.lib")
     set(PREREQUISITE_BINARIES_LIST 
-        "${BIN_DIR}/dxcompiler.dll"
-        "${BIN_DIR}/d3dcompiler_dxc_bridge.dll")
+        "${BIN_DIR}/dxcompiler.dll")
 
 elseif(APPLE)
 

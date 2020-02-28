@@ -10,6 +10,7 @@ add_subdirectory(Catch2/single_include)
 add_subdirectory(IttApi)
 add_subdirectory(SPIRV)
 add_subdirectory(DirectXCompiler)
+add_subdirectory(D3DCompilerToDXC)
 add_subdirectory(PerlinNoise)
 add_subdirectory(CLI11)
 
