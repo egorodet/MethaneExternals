@@ -1,3 +1,7 @@
+if (NOT WIN32)
+    return()
+endif()
+
 set(TARGET D3DCompilerToDXC)
 
 add_library(${TARGET} STATIC
