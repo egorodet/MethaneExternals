@@ -1,8 +1,9 @@
 cmake_minimum_required(VERSION 3.11.0)
 
 list(APPEND CMAKE_MODULE_PATH
-    "${CMAKE_CURRENT_SOURCE_DIR}/Catch2/single_include/cmake"
+    "${CMAKE_CURRENT_SOURCE_DIR}/CMakeModules"
     "${CMAKE_CURRENT_SOURCE_DIR}/CMRC"
+    "${CMAKE_CURRENT_SOURCE_DIR}/Catch2/single_include/cmake"
 )
 
 add_subdirectory(CML/cml)
@@ -39,13 +40,13 @@ endif()
 # Platform dependent libraries
 if (WIN32)
     add_subdirectory(DirectXLibraries/D3DX12)
-	
-	# DirectXTex library
-	set(DIRECTXTEX_BUILD_TOOLS        OFF CACHE BOOL "Disable DirectXTex tools build")
-	set(DIRECTXTEX_STANDALONE_ENABLED OFF CACHE BOOL "Disable DirectXTex standalone build")
+
+    # DirectXTex library
+    set(DIRECTXTEX_BUILD_TOOLS        OFF CACHE BOOL "Disable DirectXTex tools build")
+    set(DIRECTXTEX_STANDALONE_ENABLED OFF CACHE BOOL "Disable DirectXTex standalone build")
     set(BUILD_DX11                    OFF CACHE BOOL "Disabled DirectXTex DirectX11 Runtime support")
     set(BUILD_DX12                    ON  CACHE BOOL "Enabled DirectXTex DirectX12 Runtime support")
-	add_subdirectory(DirectXTex)
+    add_subdirectory(DirectXTex)
     set_target_properties(DirectXTex
         PROPERTIES
         FOLDER Externals

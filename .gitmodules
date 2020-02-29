@@ -25,3 +25,6 @@
 [submodule "IttApi"]
 	path = IttApi
 	url = https://github.com/egorodet/IttApi.git
+[submodule "CMakeModules"]
+	path = CMakeModules
+	url = https://github.com/egorodet/CMakeModules.git

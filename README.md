@@ -1,6 +1,8 @@
 # Methane Externals
 [Methane Kit](https://github.com/egorodet/MethaneKit) external libraries and tools in linked repositories or prebuilt binaries and headers:
-- [DirectXShaderCompiler](https://github.com/microsoft/DirectXShaderCompiler) - used to compiler HLSL to DXIL on Windows and to SPIRV on MacOS (prebuilt command line executables)
+- [CMakeModules](https://github.com/rpavlik/cmake-modules) - RPavlik collection of CMake modules
+- [DirectXCompiler](https://github.com/microsoft/DirectXShaderCompiler) - DirectX Shader Compiler for compiling HLSL to DXIL on Windows and HLSL to SPIRV on MacOS (prebuilt command line executables and libraries)
+  - [D3DCompilerToDXC](https://github.com/microsoft/DirectXShaderCompiler/blob/master/tools/clang/tools/d3dcomp/) - static library from DirectXShaderCompiler providing functions to bridge from d3dcompiler_47 to dxcompiler  
 - [GLSLang](https://github.com/KhronosGroup/glslang) - was previously used to compile HLSL to SPIRV bytecode on MacOS, now it is deprecated (prebuilt command line executable)
 - [SPIRV-Cross](https://github.com/KhronosGroup/SPIRV-Cross) - used to trsanslate SPIRV bytecode to Metal shaders (prebuilt command line executable)
 - [Nowide Standalone](https://github.com/nephatrine/nowide-standalone) - used for short-char to wide-char string conversions on Windows
