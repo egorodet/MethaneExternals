@@ -28,3 +28,6 @@
 [submodule "CMakeModules"]
 	path = CMakeModules
 	url = https://github.com/egorodet/CMakeModules.git
+[submodule "FreeType2"]
+	path = FreeType2
+	url = https://github.com/egorodet/FreeType2.git

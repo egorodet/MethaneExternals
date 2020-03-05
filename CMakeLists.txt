@@ -13,6 +13,7 @@ add_subdirectory(DirectXCompiler)
 add_subdirectory(D3DCompilerToDXC)
 add_subdirectory(PerlinNoise)
 add_subdirectory(CLI11)
+add_subdirectory(FreeType2)
 
 add_subdirectory(IttApi)
 set_target_properties(ittnotify
