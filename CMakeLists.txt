@@ -54,9 +54,10 @@ if (WIN32)
     )
 endif()
 
-if (METHANE_TRACY_PROFILING_ENABLED)
-    add_library(TracyClient STATIC Tracy/TracyClient.cpp)
-    target_compile_definitions(TracyClient PUBLIC TRACY_ENABLE)
-    target_include_directories(TracyClient PUBLIC Tracy)
-    set_target_properties(TracyClient PROPERTIES FOLDER Externals)
-endif()
+# Tracy client interface library
+add_library(TracyClient INTERFACE)
+target_sources(TracyClient INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/Tracy/TracyClient.cpp)
+
+# Tracy instrumentation interface library
+add_library(TracyInstrumentation INTERFACE)
+target_include_directories(TracyInstrumentation INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/Tracy)
