@@ -31,3 +31,6 @@
 [submodule "FreeType2"]
 	path = FreeType2
 	url = https://github.com/egorodet/FreeType2.git
+[submodule "Tracy"]
+	path = Tracy
+	url = https://github.com/egorodet/Tracy

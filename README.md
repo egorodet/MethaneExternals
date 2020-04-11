@@ -18,3 +18,4 @@
 - [OpenImageIO](https://github.com/OpenImageIO/oiio) - additional library used for loading of wide range of image formats via native loaders (optional dependency)
   - [USD Build Club](https://github.com/vfxpro99/usd-build-club) - used for [Open Image IO build scripts](OpenImageIO/build) with some modifications
 - [Sonar Scanner](https://sonarcloud.io) - scanner binaries for static code analysis via [Scanner Cloud](https://sonarcloud.io/dashboard?id=egorodet_MethaneKit) web-service
+- [Tracy](https://github.com/wolfpld/tracy) - Tracy realtime frame profiler

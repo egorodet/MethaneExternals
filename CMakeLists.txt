@@ -53,3 +53,10 @@ if (WIN32)
         FOLDER Externals
     )
 endif()
+
+if (METHANE_TRACY_PROFILING_ENABLED)
+    add_library(TracyClient STATIC Tracy/TracyClient.cpp)
+    target_compile_definitions(TracyClient PUBLIC TRACY_ENABLE)
+    target_include_directories(TracyClient PUBLIC Tracy)
+    set_target_properties(TracyClient PROPERTIES FOLDER Externals)
+endif()
