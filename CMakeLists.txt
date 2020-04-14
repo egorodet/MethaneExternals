@@ -15,6 +15,13 @@ add_subdirectory(PerlinNoise)
 add_subdirectory(CLI11)
 add_subdirectory(FreeType2)
 
+# Disable compiler warnings for freetype
+if(MSVC)
+    target_compile_options(freetype PRIVATE /wd4267 /wd4244 /wd4018 /wd4312)
+else()
+    target_compile_options(freetype PRIVATE -Wno-everything)
+endif()
+
 add_subdirectory(IttApi)
 set_target_properties(ittnotify
     PROPERTIES
@@ -57,6 +64,11 @@ endif()
 # Tracy client interface library
 add_library(TracyClient INTERFACE)
 target_sources(TracyClient INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/Tracy/TracyClient.cpp)
+if(MSVC)
+    target_compile_options(TracyClient INTERFACE /wd4456 /wd4189 /wd4100 /wd4505)
+else()
+    target_compile_options(TracyClient INTERFACE -Wno-error)
+endif()
 
 # Tracy instrumentation interface library
 add_library(TracyInstrumentation INTERFACE)
