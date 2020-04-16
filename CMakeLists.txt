@@ -21,6 +21,10 @@ if(MSVC)
 else()
     target_compile_options(freetype PRIVATE -Wno-everything)
 endif()
+set_target_properties(freetype
+    PROPERTIES
+    FOLDER Externals
+)
 
 add_subdirectory(IttApi)
 set_target_properties(ittnotify
