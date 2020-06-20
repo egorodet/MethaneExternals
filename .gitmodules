@@ -7,9 +7,6 @@
 [submodule "Catch2"]
 	path = Catch2
 	url = https://github.com/egorodet/Catch2.git
-[submodule "Nowide"]
-	path = Nowide
-	url = https://github.com/egorodet/Nowide.git
 [submodule "STB"]
 	path = STB
 	url = https://github.com/egorodet/STB.git
@@ -34,3 +31,7 @@
 [submodule "Tracy"]
 	path = Tracy
 	url = https://github.com/egorodet/Tracy
+[submodule "BoostNowide"]
+	path = BoostNowide
+	url = https://github.com/egorodet/BoostNowide.git
+	branch = standalone
