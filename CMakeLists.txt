@@ -33,6 +33,9 @@ set_target_properties(ittnotify
 )
 
 # Nowide library
+set(BUILD_SHARED_LIBS OFF)
+set(BUILD_TESTING OFF)
+set(NOWIDE_INSTALL OFF)
 add_subdirectory(BoostNowide)
 set_target_properties(nowide
     PROPERTIES
