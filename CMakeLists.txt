@@ -42,6 +42,12 @@ set_target_properties(nowide
     FOLDER Externals
 )
 
+# TaskFlow library
+set(TF_BUILD_BENCHMARKS OFF CACHE BOOL "Disable TaskFlow benchmarks build")
+set(TF_BUILD_CUDA OFF CACHE BOOL "Disable TaskFlow CUDA support")
+add_subdirectory(TaskFlow)
+add_library(TaskFlow ALIAS Taskflow)
+
 # Image loader library: STB or OIIO
 if (METHANE_USE_OPEN_IMAGE_IO)
     add_subdirectory(OpenImageIO)

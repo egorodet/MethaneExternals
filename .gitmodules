@@ -35,3 +35,6 @@
 	path = BoostNowide
 	url = https://github.com/egorodet/BoostNowide.git
 	branch = standalone
+[submodule "TaskFlow"]
+	path = TaskFlow
+	url = https://github.com/egorodet/TaskFlow.git
