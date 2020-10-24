@@ -17,6 +17,6 @@
 - [PerlinNoise](http://staffwww.itn.liu.se/~stegu/aqsis/aqsis-newnoise/) - improved Perlin Noise implementation by Stefan Gustavson
 - [OpenImageIO](https://github.com/OpenImageIO/oiio) - additional library used for loading of wide range of image formats via native loaders (optional dependency)
   - [USD Build Club](https://github.com/vfxpro99/usd-build-club) - used for [Open Image IO build scripts](OpenImageIO/build) with some modifications
-- [Sonar Scanner](https://sonarcloud.io) - scanner binaries for static code analysis via [Scanner Cloud](https://sonarcloud.io/dashboard?id=egorodet_MethaneKit) web-service
+- [OpenCppCoverage](https://github.com/OpenCppCoverage/OpenCppCoverage) - open source code coverage tool for C++ under Windows (binaries archive)
 - [TaskFlow](https://github.com/taskflow/taskflow) - modern C++ parallel task programming library
 - [Tracy](https://github.com/wolfpld/tracy) - Tracy realtime frame profiler
