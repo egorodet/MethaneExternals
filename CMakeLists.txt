@@ -6,6 +6,7 @@ list(APPEND CMAKE_MODULE_PATH
     "${CMAKE_CURRENT_SOURCE_DIR}/Catch2/single_include/cmake"
 )
 
+add_subdirectory(FMT)
 add_subdirectory(CML/cml)
 add_subdirectory(Catch2/single_include)
 add_subdirectory(SPIRV)

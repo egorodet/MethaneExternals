@@ -38,3 +38,6 @@
 [submodule "TaskFlow"]
 	path = TaskFlow
 	url = https://github.com/egorodet/TaskFlow.git
+[submodule "FMT"]
+	path = FMT
+	url = https://github.com/egorodet/FMT.git
