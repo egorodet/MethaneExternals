@@ -8,7 +8,7 @@ list(APPEND CMAKE_MODULE_PATH
 
 add_subdirectory(FMT)
 add_subdirectory(CML/cml)
-add_subdirectory(Catch2/single_include)
+add_subdirectory(Catch2)
 add_subdirectory(SPIRV)
 add_subdirectory(DirectXCompiler)
 add_subdirectory(D3DCompilerToDXC)
