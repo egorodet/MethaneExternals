@@ -65,7 +65,6 @@ if (WIN32)
     # DirectXTex library
     set(DIRECTXTEX_BUILD_TOOLS                 OFF CACHE BOOL "Disable DirectXTex tools build")
     set(DIRECTXTEX_STANDALONE_ENABLED          OFF CACHE BOOL "Disable DirectXTex standalone build")
-    set(DIRECTXTEX_PRECOMPILED_HEADERS_ENABLED OFF CACHE BOOL "Disable DirectXTex precompiled headers")
     set(BUILD_DX11                             OFF CACHE BOOL "Disable DirectXTex DirectX11 Runtime support")
     set(BUILD_DX12                             ON  CACHE BOOL "Enabled DirectXTex DirectX12 Runtime support")
     add_subdirectory(DirectXTex)
@@ -73,11 +72,6 @@ if (WIN32)
         PROPERTIES
         FOLDER Externals
     )
-    if(MSVC)
-        target_compile_options(DirectXTex INTERFACE /wd5103 /wd4005)
-    else()
-        target_compile_options(DirectXTex INTERFACE -Wno-error)
-    endif()
 endif()
 
 # Tracy client interface library
