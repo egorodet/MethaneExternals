@@ -15,6 +15,7 @@ add_subdirectory(D3DCompilerToDXC)
 add_subdirectory(PerlinNoise)
 add_subdirectory(CLI11)
 add_subdirectory(FreeType2)
+add_subdirectory(IttApi)
 
 # Disable compiler warnings for freetype
 if(MSVC)
@@ -22,26 +23,12 @@ if(MSVC)
 else()
     target_compile_options(freetype PRIVATE -Wno-everything)
 endif()
-set_target_properties(freetype
-    PROPERTIES
-    FOLDER Externals
-)
-
-add_subdirectory(IttApi)
-set_target_properties(ittnotify
-    PROPERTIES
-    FOLDER Externals
-)
 
 # Nowide library
 set(BUILD_SHARED_LIBS OFF)
 set(BUILD_TESTING OFF)
 set(NOWIDE_INSTALL OFF CACHE BOOL "Disable nowide library installation")
 add_subdirectory(BoostNowide)
-set_target_properties(nowide
-    PROPERTIES
-    FOLDER Externals
-)
 
 # TaskFlow library
 set(TF_BUILD_BENCHMARKS OFF CACHE BOOL "Disable TaskFlow benchmarks build")
@@ -73,6 +60,11 @@ if (WIN32)
         FOLDER Externals
     )
 endif()
+
+set_target_properties(nowide fmt freetype ittnotify
+    PROPERTIES
+    FOLDER Externals
+)
 
 # Tracy client interface library
 add_library(TracyClient INTERFACE)
