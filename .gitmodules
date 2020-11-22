@@ -41,3 +41,6 @@
 [submodule "FMT"]
 	path = FMT
 	url = https://github.com/egorodet/FMT.git
+[submodule "MagicEnum"]
+	path = MagicEnum
+	url = https://github.com/egorodet/MagicEnum

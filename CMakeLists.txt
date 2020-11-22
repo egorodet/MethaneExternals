@@ -16,6 +16,7 @@ add_subdirectory(PerlinNoise)
 add_subdirectory(CLI11)
 add_subdirectory(FreeType2)
 add_subdirectory(IttApi)
+add_subdirectory(MagicEnum)
 
 # Disable compiler warnings for freetype
 if(MSVC)
