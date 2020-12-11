@@ -1,3 +1,7 @@
+if (POLICY CMP0114)
+    cmake_policy(SET CMP0114 NEW) # 'ExternalProject' step targets fully adopt their steps, support new CMake build system
+endif()
+
 set(TARGET DirectXCompiler)
 
 include(MethaneModules)
