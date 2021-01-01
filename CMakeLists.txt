@@ -79,3 +79,7 @@ endif()
 # Tracy instrumentation interface library
 add_library(TracyInstrumentation INTERFACE)
 target_include_directories(TracyInstrumentation INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/Tracy)
+
+# HLSL++ library
+add_library(HLSLpp INTERFACE)
+target_include_directories(HLSLpp INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/HLSLpp/include)
