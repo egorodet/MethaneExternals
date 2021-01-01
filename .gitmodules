@@ -44,3 +44,6 @@
 [submodule "MagicEnum"]
 	path = MagicEnum
 	url = https://github.com/egorodet/MagicEnum
+[submodule "HLSLpp"]
+	path = HLSLpp
+	url = https://github.com/egorodet/HLSLpp.git
