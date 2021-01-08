@@ -12,8 +12,8 @@
 - [FMT](https://github.com/fmtlib/fmt) - modern formatting library
 - [FreeType2](https://www.freetype.org/) - software library to render fonts
 - [MagicEnum](https://github.com/Neargye/magic_enum) - static reflection for enums for modern C++
-- [CML: The Configurable Math Library](https://github.com/demianmnave/CML) - header only template vector math used in sample apps
-- [HLSLpp](https://github.com/redorav/hlslpp) - math library using HLSL syntax with SSE/NEON support
+- [CML](https://github.com/demianmnave/CML) (The Configurable Math Library) - header only template vector math used in sample apps
+- [HLSL++](https://github.com/redorav/hlslpp) - math library using HLSL syntax with SSE/NEON support
 - [CLI11](https://github.com/CLIUtils/CLI11) - header only command line parser for C++11 and beyond
 - [Catch2](https://github.com/catchorg/Catch2) - header only unit-testing framework
 - [IttApi](https://github.com/intel/ittapi) - Intel Instrumentation and Tracing Technology (ITT) and Just-In-Time (JIT) API
