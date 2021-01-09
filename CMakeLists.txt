@@ -83,6 +83,11 @@ target_include_directories(TracyInstrumentation INTERFACE ${CMAKE_CURRENT_SOURCE
 # HLSL++ library
 add_library(HLSLpp INTERFACE)
 target_include_directories(HLSLpp INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/HLSLpp/include)
+target_compile_definitions(HLSLpp INTERFACE
+    HLSLPP_FEATURE_TRANSFORM # Enable transformation matrices
+    HLSLPP_LOGICAL_LAYOUT=0  # Set row-major logical layout
+    HLSLPP_COORDINATES=0     # Set left-handed coordinate system
+)
 if(MSVC)
     target_sources(HLSLpp INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/HLSLpp/include/hlsl++.natvis)
 elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU") # GCC
