@@ -10,9 +10,6 @@
 [submodule "STB"]
 	path = STB
 	url = https://github.com/egorodet/STB.git
-[submodule "DirectXLibraries"]
-	path = DirectXLibraries
-	url = https://github.com/egorodet/DirectXLibraries.git
 [submodule "DirectXTex"]
 	path = DirectXTex
 	url = https://github.com/egorodet/DirectXTex.git
