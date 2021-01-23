@@ -3,11 +3,9 @@ cmake_minimum_required(VERSION 3.11.0)
 list(APPEND CMAKE_MODULE_PATH
     "${CMAKE_CURRENT_SOURCE_DIR}/CMakeModules"
     "${CMAKE_CURRENT_SOURCE_DIR}/CMRC"
-    "${CMAKE_CURRENT_SOURCE_DIR}/Catch2/single_include/cmake"
 )
 
 add_subdirectory(FMT)
-add_subdirectory(CML/cml)
 add_subdirectory(Catch2)
 add_subdirectory(SPIRV)
 add_subdirectory(DirectXCompiler)
@@ -62,7 +60,7 @@ if (WIN32)
     )
 endif()
 
-set_target_properties(nowide fmt freetype ittnotify
+set_target_properties(nowide fmt freetype ittnotify Catch2WithMain
     PROPERTIES
     FOLDER Externals
 )
