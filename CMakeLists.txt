@@ -71,7 +71,7 @@ target_sources(TracyClient INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/Tracy/TracyClie
 if(MSVC)
     target_compile_options(TracyClient INTERFACE /wd4456 /wd4189 /wd4100 /wd4505 /wd4244)
 else()
-    target_compile_options(TracyClient INTERFACE -Wno-error)
+    target_compile_options(TracyClient INTERFACE -Wno-error -Wno-unused-parameter -Wno-sign-compare)
 endif()
 
 # Tracy instrumentation interface library
