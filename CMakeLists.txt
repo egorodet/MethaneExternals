@@ -60,7 +60,7 @@ if (WIN32)
     )
 endif()
 
-set_target_properties(nowide fmt freetype ittnotify Catch2WithMain
+set_target_properties(nowide fmt freetype ittnotify
     PROPERTIES
     FOLDER Externals
 )
