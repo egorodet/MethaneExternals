@@ -47,8 +47,11 @@ endif()
 
 # Vulkan graphics API specific libraries
 if (METHANE_GFX_API EQUAL METHANE_GFX_VULKAN)
-    add_subdirectory(Volk)
     add_subdirectory(Vulkan-Headers)
+
+    set(VOLK_STATIC_DEFINES VOLK_VULKAN_H_PATH=\"${CMAKE_CURRENT_LIST_DIR}/Vulkan-Headers/include/vulkan/vulkan.h\")
+    add_subdirectory(Volk)
+
     set_target_properties(volk
         PROPERTIES
         FOLDER Externals
