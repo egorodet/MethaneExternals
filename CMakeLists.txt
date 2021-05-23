@@ -39,7 +39,7 @@ add_subdirectory(TaskFlow)
 add_library(TaskFlow ALIAS Taskflow)
 
 # Image loader library: STB or OIIO
-if (METHANE_USE_OPEN_IMAGE_IO)
+if (METHANE_OPEN_IMAGE_IO_ENABLED)
     add_subdirectory(OpenImageIO)
 else()
     add_subdirectory(STB)
