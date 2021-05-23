@@ -41,3 +41,9 @@
 [submodule "HLSLpp"]
 	path = HLSLpp
 	url = https://github.com/egorodet/HLSLpp.git
+[submodule "Volk"]
+	path = Volk
+	url = https://github.com/egorodet/Volk.git
+[submodule "Vulkan-Headers"]
+	path = Vulkan-Headers
+	url = https://github.com/egorodet/Vulkan-Headers.git

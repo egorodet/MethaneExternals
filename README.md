@@ -45,6 +45,11 @@
 - :scroll: [DirectXLibs/D3DX12](https://github.com/Microsoft/DirectX-Graphics-Samples/tree/master/Libraries/D3DX12) - DirectX 12 helpers library
 - :blue_book: [DirectXTex](https://github.com/microsoft/DirectXTex) - DirectX texture processing library
 
+## Vulkan Libraries
+
+- :green-book: [Vulkan-Headers](https://github.com/KhronosGroup/Vulkan-Headers) - Vulkan Header files and API registry
+- :blue-book: [Volk](https://github.com/zeux/volk) - Meta loader for Vulkan API
+
 ## Testing, Profiling and Instrumentation
 
 - :green_book: [Catch2](https://github.com/catchorg/Catch2) - header only unit-testing framework

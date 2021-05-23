@@ -5,6 +5,7 @@ list(APPEND CMAKE_MODULE_PATH
     "${CMAKE_CURRENT_SOURCE_DIR}/CMRC"
 )
 
+# Common libraries
 add_subdirectory(FMT)
 add_subdirectory(Catch2)
 add_subdirectory(SPIRV)
@@ -44,8 +45,18 @@ else()
     add_subdirectory(STB)
 endif()
 
-# Platform dependent libraries
-if (WIN32)
+# Vulkan graphics API specific libraries
+if (METHANE_GFX_API EQUAL METHANE_GFX_VULKAN)
+    add_subdirectory(Volk)
+    add_subdirectory(Vulkan-Headers)
+    set_target_properties(volk
+        PROPERTIES
+        FOLDER Externals
+    )
+endif()
+
+# DirectX graphics API dependent libraries
+if (METHANE_GFX_API EQUAL METHANE_GFX_DIRECTX)
     add_subdirectory(DirectXLibs/D3DX12)
 
     # DirectXTex library
@@ -59,11 +70,6 @@ if (WIN32)
         FOLDER Externals
     )
 endif()
-
-set_target_properties(nowide fmt freetype ittnotify
-    PROPERTIES
-    FOLDER Externals
-)
 
 # Tracy client interface library
 add_library(TracyClient INTERFACE)
@@ -91,3 +97,8 @@ if(MSVC)
 elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU") # GCC
     target_compile_options(HLSLpp INTERFACE -Wno-deprecated-copy)
 endif()
+
+set_target_properties(nowide fmt freetype ittnotify
+    PROPERTIES
+    FOLDER Externals
+)
