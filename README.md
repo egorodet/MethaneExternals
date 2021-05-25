@@ -48,7 +48,6 @@
 ## Vulkan Libraries
 
 - :green-book: [Vulkan-Headers](https://github.com/KhronosGroup/Vulkan-Headers) - Vulkan Header files and API registry
-- :blue-book: [Volk](https://github.com/zeux/volk) - Meta loader for Vulkan API
 
 ## Testing, Profiling and Instrumentation
 
