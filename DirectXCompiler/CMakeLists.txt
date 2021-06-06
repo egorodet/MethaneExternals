@@ -33,7 +33,7 @@ if(WIN32)
 
 elseif(APPLE)
 
-    set(BINARIES_MD5 04b34810547ab0c95d6d36716b5404ec)
+    set(BINARIES_MD5 bac6f20868b8026db11545bb7af5a514)
 
 else() # Linux
 
