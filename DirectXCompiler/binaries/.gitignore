@@ -1,4 +1,5 @@
 ﻿# Ignore directories with unpacked binaries
 /MacOS
+/Linux
 /Windows-x64
 /Windows-x86

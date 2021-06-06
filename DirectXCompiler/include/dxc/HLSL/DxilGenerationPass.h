@@ -44,7 +44,6 @@ namespace llvm {
 
 /// \brief Create and return a pass that tranform the module into a DXIL module
 /// Note that this pass is designed for use with the legacy pass manager.
-ModulePass *createDxilCondenseResourcesPass();
 ModulePass *createDxilLowerCreateHandleForLibPass();
 ModulePass *createDxilAllocateResourcesForLibPass();
 ModulePass *createDxilEliminateOutputDynamicIndexingPass();
@@ -75,8 +74,8 @@ ModulePass *createPausePassesPass();
 ModulePass *createResumePassesPass();
 FunctionPass *createMatrixBitcastLowerPass();
 ModulePass *createDxilCleanupAddrSpaceCastPass();
+ModulePass *createDxilRenameResourcesPass();
 
-void initializeDxilCondenseResourcesPass(llvm::PassRegistry&);
 void initializeDxilLowerCreateHandleForLibPass(llvm::PassRegistry&);
 void initializeDxilAllocateResourcesForLibPass(llvm::PassRegistry&);
 void initializeDxilEliminateOutputDynamicIndexingPass(llvm::PassRegistry&);
@@ -108,10 +107,29 @@ void initializePausePassesPass(llvm::PassRegistry&);
 void initializeResumePassesPass(llvm::PassRegistry&);
 void initializeMatrixBitcastLowerPassPass(llvm::PassRegistry&);
 void initializeDxilCleanupAddrSpaceCastPass(llvm::PassRegistry&);
+void initializeDxilRenameResourcesPass(llvm::PassRegistry&);
 
 ModulePass *createDxilValidateWaveSensitivityPass();
 void initializeDxilValidateWaveSensitivityPass(llvm::PassRegistry&);
 
+FunctionPass *createCleanupDxBreakPass();
+void initializeCleanupDxBreakPass(llvm::PassRegistry&);
+
+FunctionPass *createDxilLoopDeletionPass();
+void initializeDxilLoopDeletionPass(llvm::PassRegistry &);
+
+ModulePass *createHLLegalizeParameter();
+void initializeHLLegalizeParameterPass(llvm::PassRegistry &);
+
 bool AreDxilResourcesDense(llvm::Module *M, hlsl::DxilResourceBase **ppNonDense);
+
+ModulePass *createDxilNoOptLegalizePass();
+void initializeDxilNoOptLegalizePass(llvm::PassRegistry&);
+
+ModulePass *createDxilNoOptSimplifyInstructionsPass();
+void initializeDxilNoOptSimplifyInstructionsPass(llvm::PassRegistry&);
+
+ModulePass *createDxilMutateResourceToHandlePass();
+void initializeDxilMutateResourceToHandlePass(llvm::PassRegistry&);
 
 }

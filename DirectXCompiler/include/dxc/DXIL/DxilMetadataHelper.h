@@ -32,6 +32,7 @@ class MDNode;
 class NamedMDNode;
 class GlobalVariable;
 class StringRef;
+class Type;
 }
 
 namespace hlsl {
@@ -48,6 +49,8 @@ class DxilSampler;
 class DxilTypeSystem;
 class DxilStructAnnotation;
 class DxilFieldAnnotation;
+class DxilPayloadAnnotation;
+class DxilPayloadFieldAnnotation;
 class DxilTemplateArgAnnotation;
 class DxilFunctionAnnotation;
 class DxilParameterAnnotation;
@@ -55,6 +58,7 @@ class RootSignatureHandle;
 struct DxilFunctionProps;
 class DxilSubobjects;
 class DxilSubobject;
+struct DxilCounters;
 
 // Additional debug information for SROA'ed array variables,
 // where adjacent elements in DXIL might not have been adjacent
@@ -89,6 +93,10 @@ public:
   static const char kDxilIntermediateOptionsMDName[];
   static const unsigned kDxilIntermediateOptionsFlags = 0;  // Unique element ID.
 
+  // DxilCounters
+  static const char kDxilCountersMDName[];
+  // !{!"<counter>", i32 <count>, !"<counter>", i32 <count>, ...}
+
   // Entry points.
   static const char kDxilEntryPointsMDName[];
 
@@ -106,6 +114,12 @@ public:
   static const char kDxilSourceDefinesMDName[];
   static const char kDxilSourceMainFileNameMDName[];
   static const char kDxilSourceArgsMDName[];
+
+  // Old source info.
+  static const char kDxilSourceContentsOldMDName[];
+  static const char kDxilSourceDefinesOldMDName[];
+  static const char kDxilSourceMainFileNameOldMDName[];
+  static const char kDxilSourceArgsOldMDName[];
 
   static const unsigned kDxilEntryPointNumFields  = 5;
   static const unsigned kDxilEntryPointFunction   = 0;  // Entry point function symbol.
@@ -188,6 +202,7 @@ public:
   static const unsigned kDxilTypedBufferElementTypeTag            = 0;
   static const unsigned kDxilStructuredBufferElementStrideTag     = 1;
   static const unsigned kDxilSamplerFeedbackKindTag               = 2;
+  static const unsigned kDxilAtomic64UseTag                       = 3;
 
   // Type system.
   static const char kDxilTypeSystemMDName[];
@@ -204,6 +219,10 @@ public:
   static const unsigned kDxilFieldAnnotationCompTypeTag           = 7;
   static const unsigned kDxilFieldAnnotationPreciseTag            = 8;
   static const unsigned kDxilFieldAnnotationCBUsedTag             = 9;
+
+  // DXR Payload Annotations
+  static const unsigned kDxilPayloadAnnotationStructTag           = 0;
+  static const unsigned kDxilPayloadFieldAnnotationAccessTag      = 0;
 
   // StructAnnotation extended property tags (DXIL 1.5+ only, appended)
   static const unsigned kDxilTemplateArgumentsTag                 = 0;  // Name for name-value list of extended struct properties
@@ -230,9 +249,15 @@ public:
   // Variable debug layout metadata.
   static const char kDxilVariableDebugLayoutMDName[];
 
+  // Indication of temporary storage metadata.
+  static const char kDxilTempAllocaMDName[];
+
   // Validator version.
   static const char kDxilValidatorVersionMDName[];
   // Validator version uses the same constants for fields as kDxilVersion*
+
+  // DXR Payload Annotations metadata.
+  static const char kDxilDxrPayloadAnnotationsMDName[];
 
   // Extended shader property tags.
   static const unsigned kDxilShaderFlagsTag     = 0;
@@ -246,6 +271,7 @@ public:
   static const unsigned kDxilShaderKindTag      = 8;
   static const unsigned kDxilMSStateTag         = 9;
   static const unsigned kDxilASStateTag         = 10;
+  static const unsigned kDxilWaveSizeTag        = 11;
 
   // GSState.
   static const unsigned kDxilGSStateNumFields               = 5;
@@ -398,6 +424,16 @@ public:
   llvm::Metadata *EmitDxilTemplateArgAnnotation(const DxilTemplateArgAnnotation &annotation);
   void LoadDxilTemplateArgAnnotation(const llvm::MDOperand &MDO, DxilTemplateArgAnnotation &annotation);
 
+  // DXR Payload Annotations 
+  void EmitDxrPayloadAnnotations(DxilTypeSystem &TypeSystem);
+  llvm::Metadata *EmitDxrPayloadStructAnnotation(const DxilPayloadAnnotation& SA);
+  llvm::Metadata *EmitDxrPayloadFieldAnnotation(const DxilPayloadFieldAnnotation &FA, llvm::Type* fieldType);
+  void LoadDxrPayloadAnnotationNode(const llvm::MDTuple &MDT, DxilTypeSystem &TypeSystem);
+  void LoadDxrPayloadAnnotations(DxilTypeSystem &TypeSystem);
+  void LoadDxrPayloadFieldAnnoations(const llvm::MDOperand& MDO, DxilPayloadAnnotation& SA);
+  void LoadDxrPayloadFieldAnnoation(const llvm::MDOperand &MDO, DxilPayloadFieldAnnotation &FA);
+  void LoadDxrPayloadAccessQualifiers(const llvm::MDOperand &MDO, DxilPayloadFieldAnnotation &FA);
+
   // Function props.
   llvm::MDTuple *EmitDxilFunctionProps(const hlsl::DxilFunctionProps *props,
                                        const llvm::Function *F);
@@ -427,6 +463,10 @@ public:
 
   // Extra metadata present
   bool HasExtraMetadata() { return m_bExtraMetadata; }
+
+  // Instruction Counters
+  void EmitDxilCounters(const DxilCounters &counters);
+  void LoadDxilCounters(DxilCounters &counters) const;
 
   // Shader specific.
 private:
@@ -470,9 +510,14 @@ private:
 
   llvm::MDTuple *EmitDxilASState(const unsigned *NumThreads, unsigned payloadSizeInBytes);
   void LoadDxilASState(const llvm::MDOperand &MDO, unsigned *NumThreads, unsigned &payloadSizeInBytes);
+
+  void AddCounterIfNonZero(uint32_t value, llvm::StringRef name, std::vector<llvm::Metadata*> &MDVals);
+  void LoadCounterMD(const llvm::MDOperand &MDName, const llvm::MDOperand &MDValue, DxilCounters &counters) const;
 public:
   // Utility functions.
   static bool IsKnownNamedMetaData(const llvm::NamedMDNode &Node);
+  static bool IsKnownMetadataID(llvm::LLVMContext &Ctx, unsigned ID);
+  static void GetKnownMetadataIDs(llvm::LLVMContext &Ctx, llvm::SmallVectorImpl<unsigned> *pIDs);
   static void combineDxilMetadata(llvm::Instruction *K, const llvm::Instruction *J);
   static llvm::ConstantAsMetadata *Int32ToConstMD(int32_t v, llvm::LLVMContext &Ctx);
   llvm::ConstantAsMetadata *Int32ToConstMD(int32_t v);

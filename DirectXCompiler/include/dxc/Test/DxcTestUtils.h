@@ -18,6 +18,7 @@
 #include "dxc/Support/dxcapi.use.h"
 #include "llvm/ADT/ArrayRef.h"
 #include "llvm/ADT/StringRef.h"
+#include "llvm/ADT/StringMap.h"
 
 namespace hlsl {
 namespace options {
@@ -46,6 +47,9 @@ public:
   /// checks that some error message does not occur, for example.
   bool AllowEmptyInput;
 
+  /// VariableTable - This holds all the current filecheck variables.
+  llvm::StringMap<std::string> VariableTable;
+
   /// String to read in place of standard input.
   std::string InputForStdin;
   /// Output stream.
@@ -55,6 +59,9 @@ public:
 
   int Run();
 };
+
+// wstring because most uses need UTF-16: IDxcResult output names, include handler
+typedef std::map<std::wstring, CComPtr<IDxcBlob>> FileMap;
 
 // The result of running a single command in a run pipeline
 struct FileRunCommandResult {
@@ -67,21 +74,21 @@ struct FileRunCommandResult {
   static inline FileRunCommandResult Success() {
     FileRunCommandResult result;
     result.ExitCode = 0;
-    return std::move(result);
+    return result;
   }
 
   static inline FileRunCommandResult Success(std::string StdOut) {
     FileRunCommandResult result;
     result.ExitCode = 0;
     result.StdOut = std::move(StdOut);
-    return std::move(result);
+    return result;
   }
 
   static inline FileRunCommandResult Error(int ExitCode, std::string StdErr) {
     FileRunCommandResult result;
     result.ExitCode = ExitCode;
     result.StdErr = std::move(StdErr);
-    return std::move(result);
+    return result;
   }
 
   static inline FileRunCommandResult Error(std::string StdErr) {
@@ -97,21 +104,24 @@ public:
   FileRunCommandPart(const FileRunCommandPart&) = default;
   FileRunCommandPart(FileRunCommandPart&&) = default;
   
-  FileRunCommandResult Run(dxc::DxcDllSupport &DllSupport, const FileRunCommandResult *Prior, PluginToolsPaths *pPluginToolsPaths = nullptr );
+  FileRunCommandResult Run(dxc::DxcDllSupport &DllSupport, const FileRunCommandResult *Prior, PluginToolsPaths *pPluginToolsPaths = nullptr, LPCWSTR dumpName = nullptr);
   FileRunCommandResult RunHashTests(dxc::DxcDllSupport &DllSupport);
   
-  FileRunCommandResult ReadOptsForDxc(hlsl::options::MainArgs &argStrings, hlsl::options::DxcOpts &Opts);
+  FileRunCommandResult ReadOptsForDxc(hlsl::options::MainArgs &argStrings, hlsl::options::DxcOpts &Opts, unsigned flagsToInclude = 0);
 
   std::string Command;      // Command to run, eg %dxc
   std::string Arguments;    // Arguments to command
   LPCWSTR CommandFileName;  // File name replacement for %s
+  FileMap *pVFS = nullptr;  // Files in virtual file system
 
 private:
-  FileRunCommandResult RunFileChecker(const FileRunCommandResult *Prior);
+  FileRunCommandResult RunFileChecker(const FileRunCommandResult *Prior, LPCWSTR dumpName = nullptr);
   FileRunCommandResult RunDxc(dxc::DxcDllSupport &DllSupport, const FileRunCommandResult *Prior);
   FileRunCommandResult RunDxv(dxc::DxcDllSupport &DllSupport, const FileRunCommandResult *Prior);
   FileRunCommandResult RunOpt(dxc::DxcDllSupport &DllSupport, const FileRunCommandResult *Prior);
   FileRunCommandResult RunD3DReflect(dxc::DxcDllSupport &DllSupport, const FileRunCommandResult *Prior);
+  FileRunCommandResult RunDxr(dxc::DxcDllSupport &DllSupport, const FileRunCommandResult *Prior);
+  FileRunCommandResult RunLink(dxc::DxcDllSupport &DllSupport, const FileRunCommandResult *Prior);
   FileRunCommandResult RunTee(const FileRunCommandResult *Prior);
   FileRunCommandResult RunXFail(const FileRunCommandResult *Prior);
   FileRunCommandResult RunDxilVer(dxc::DxcDllSupport& DllSupport, const FileRunCommandResult* Prior);
@@ -136,8 +146,13 @@ public:
   std::string ErrorMessage;
   int RunResult;
   static FileRunTestResult RunHashTestFromFileCommands(LPCWSTR fileName);
-  static FileRunTestResult RunFromFileCommands(LPCWSTR fileName, PluginToolsPaths *pPluginToolsPaths = nullptr);
-  static FileRunTestResult RunFromFileCommands(LPCWSTR fileName, dxc::DxcDllSupport &dllSupport, PluginToolsPaths *pPluginToolsPaths = nullptr);
+  static FileRunTestResult RunFromFileCommands(LPCWSTR fileName,
+                                               PluginToolsPaths *pPluginToolsPaths = nullptr,
+                                               LPCWSTR dumpName = nullptr);
+  static FileRunTestResult RunFromFileCommands(LPCWSTR fileName,
+                                               dxc::DxcDllSupport &dllSupport,
+                                               PluginToolsPaths *pPluginToolsPaths = nullptr,
+                                               LPCWSTR dumpName = nullptr);
 };
 
 void AssembleToContainer(dxc::DxcDllSupport &dllSupport, IDxcBlob *pModule, IDxcBlob **pContainer);

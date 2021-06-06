@@ -7,7 +7,7 @@ set(TARGET OpenImageIO)
 include(MethaneModules)
 include(ExternalProject)
 
-get_platform_dir()
+get_platform_dir(PLATFORM_DIR CPP_EXT)
 
 file(GLOB OPEN_EXR_INCLUDES include/OpenEXR/*.h)
 file(GLOB OPEN_IMAGE_IO_INCLUDES include/OpenImageIO/*.h)
