@@ -32,9 +32,9 @@ add_subdirectory(BoostNowide)
 
 # TaskFlow library
 set(TF_BUILD_BENCHMARKS OFF CACHE BOOL "Disable TaskFlow benchmarks build")
-set(TF_BUILD_CUDA OFF CACHE BOOL "Disable TaskFlow CUDA support")
-set(TF_BUILD_TESTS OFF CACHE BOOL "Disable TaskFlow tests build")
-set(TF_BUILD_EXAMPLES OFF CACHE BOOL "Disable TaskFlow examples build")
+set(TF_BUILD_CUDA       OFF CACHE BOOL "Disable TaskFlow CUDA support")
+set(TF_BUILD_TESTS      OFF CACHE BOOL "Disable TaskFlow tests build")
+set(TF_BUILD_EXAMPLES   OFF CACHE BOOL "Disable TaskFlow examples build")
 add_subdirectory(TaskFlow)
 add_library(TaskFlow ALIAS Taskflow)
 
@@ -47,7 +47,33 @@ endif()
 
 # Vulkan graphics API specific libraries
 if (METHANE_GFX_API EQUAL METHANE_GFX_VULKAN)
+    # Vulkan Headers library
     add_subdirectory(Vulkan-Headers)
+
+    # SPIRV-Cross library
+    option(SPIRV_CROSS_SHARED         "Build the C API as a single shared library." OFF)
+    option(SPIRV_CROSS_STATIC         "Build the C and C++ API as static libraries." ON)
+    option(SPIRV_CROSS_CLI            "Build the CLI binary. Requires SPIRV_CROSS_STATIC." ON)
+    option(SPIRV_CROSS_ENABLE_TESTS   "Enable SPIRV-Cross tests." ON)
+    option(SPIRV_CROSS_ENABLE_GLSL    "Enable GLSL support." ON)
+    option(SPIRV_CROSS_ENABLE_HLSL    "Enable HLSL target support." ON)
+    option(SPIRV_CROSS_ENABLE_MSL     "Enable MSL target support." ON)
+    option(SPIRV_CROSS_ENABLE_CPP     "Enable C++ target support." ON)
+    option(SPIRV_CROSS_ENABLE_REFLECT "Enable JSON reflection target support." ON)
+    option(SPIRV_CROSS_ENABLE_C_API   "Enable C API wrapper support in static library." ON)
+    option(SPIRV_CROSS_ENABLE_UTIL    "Enable util module support." ON)
+    set(SPIRV_CROSS_STATIC         ON )
+    set(SPIRV_CROSS_SHARED         OFF)
+    set(SPIRV_CROSS_CLI            OFF)
+    set(SPIRV_CROSS_ENABLE_TESTS   OFF)
+    set(SPIRV_CROSS_ENABLE_HLSL    ON)
+    set(SPIRV_CROSS_ENABLE_GLSL    ON)
+    set(SPIRV_CROSS_ENABLE_MSL     OFF)
+    set(SPIRV_CROSS_ENABLE_CPP     OFF)
+    set(SPIRV_CROSS_ENABLE_REFLECT OFF)
+    set(SPIRV_CROSS_ENABLE_C_API   OFF)
+    set(SPIRV_CROSS_ENABLE_UTIL    OFF)
+    add_subdirectory(SPIRV-Cross)
 endif()
 
 # DirectX graphics API dependent libraries
@@ -55,10 +81,10 @@ if (METHANE_GFX_API EQUAL METHANE_GFX_DIRECTX)
     add_subdirectory(DirectXLibs/D3DX12)
 
     # DirectXTex library
-    set(DIRECTXTEX_BUILD_TOOLS                 OFF CACHE BOOL "Disable DirectXTex tools build")
-    set(DIRECTXTEX_STANDALONE_ENABLED          OFF CACHE BOOL "Disable DirectXTex standalone build")
-    set(BUILD_DX11                             OFF CACHE BOOL "Disable DirectXTex DirectX11 Runtime support")
-    set(BUILD_DX12                             ON  CACHE BOOL "Enabled DirectXTex DirectX12 Runtime support")
+    set(DIRECTXTEX_BUILD_TOOLS        OFF CACHE BOOL "Disable DirectXTex tools build")
+    set(DIRECTXTEX_STANDALONE_ENABLED OFF CACHE BOOL "Disable DirectXTex standalone build")
+    set(BUILD_DX11                    OFF CACHE BOOL "Disable DirectXTex DirectX11 Runtime support")
+    set(BUILD_DX12                    ON  CACHE BOOL "Enabled DirectXTex DirectX12 Runtime support")
     add_subdirectory(DirectXTex)
     set_target_properties(DirectXTex
         PROPERTIES

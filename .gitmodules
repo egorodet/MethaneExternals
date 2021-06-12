@@ -44,3 +44,6 @@
 [submodule "Vulkan-Headers"]
 	path = Vulkan-Headers
 	url = https://github.com/egorodet/Vulkan-Headers.git
+[submodule "SPIRV-Cross"]
+	path = SPIRV-Cross
+	url = https://github.com/egorodet/SPIRV-Cross.git

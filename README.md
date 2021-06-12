@@ -47,7 +47,8 @@
 
 ## Vulkan Libraries
 
-- :green-book: [Vulkan-Headers](https://github.com/KhronosGroup/Vulkan-Headers) - Vulkan Header files and API registry
+- :green_book: [Vulkan-Headers](https://github.com/KhronosGroup/Vulkan-Headers) - Vulkan Header files and API registry
+- :blue_book: [SPIRV-Cross](https://github.com/KhronosGroup/SPIRV-Cross) - tool and library for performing reflection on SPIR-V and disassembling SPIR-V back to high level languages.
 
 ## Testing, Profiling and Instrumentation
 
