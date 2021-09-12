@@ -13,11 +13,18 @@ add_subdirectory(DirectXCompiler)
 add_subdirectory(D3DCompilerToDXC)
 add_subdirectory(PerlinNoise)
 add_subdirectory(CLI11)
-add_subdirectory(FreeType2)
 add_subdirectory(IttApi)
 add_subdirectory(MagicEnum)
 
-# Disable compiler warnings for freetype
+# FreeType library
+include(FindPkgConfig)
+set(FT_DISABLE_ZLIB ON CACHE BOOL "Disable Freetype ZLib support")
+set(FT_DISABLE_BZIP2 ON CACHE BOOL "Disable Freetype BZip2 support")
+set(FT_DISABLE_PNG ON CACHE BOOL "Disable Freetype PNG support")
+set(FT_DISABLE_HARFBUZZ ON CACHE BOOL "Disable Freetype HarfBuzz support")
+set(FT_DISABLE_BROTLI ON CACHE BOOL "Disable Freetype Brotli support")
+add_subdirectory(FreeType2)
+
 if(MSVC)
     target_compile_options(freetype PRIVATE /wd4267 /wd4244 /wd4018 /wd4312)
 else()
