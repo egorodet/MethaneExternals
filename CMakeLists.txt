@@ -107,6 +107,11 @@ if(MSVC)
 else()
     target_compile_options(TracyClient INTERFACE -Wno-error -Wno-unused-parameter -Wno-sign-compare)
 endif()
+if(NOT WIN32 AND NOT APPLE AND UNIX) # Linux
+    set(THREADS_PREFER_PTHREAD_FLAG ON)
+    find_package(Threads REQUIRED)
+    target_link_libraries(TracyClient INTERFACE Threads::Threads)
+endif()
 
 # Tracy instrumentation interface library
 add_library(TracyInstrumentation INTERFACE)
