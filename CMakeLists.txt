@@ -107,8 +107,10 @@ if(MSVC)
 else()
     target_compile_options(TracyClient INTERFACE -Wno-error -Wno-unused-parameter -Wno-sign-compare)
 endif()
+
 if(NOT WIN32 AND NOT APPLE AND UNIX) # Linux
-    set(THREADS_PREFER_PTHREAD_FLAG ON)
+    # Do not use -pthread compiler flag cause it breaks precompiled headers in incremental build
+    set(THREADS_PREFER_PTHREAD_FLAG OFF)
     find_package(Threads REQUIRED)
     target_link_libraries(TracyClient INTERFACE Threads::Threads)
 endif()
