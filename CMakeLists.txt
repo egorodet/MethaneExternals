@@ -58,29 +58,23 @@ if (METHANE_GFX_API EQUAL METHANE_GFX_VULKAN)
     add_subdirectory(Vulkan-Headers)
 
     # SPIRV-Cross library
-    option(SPIRV_CROSS_SHARED         "Build the C API as a single shared library." OFF)
-    option(SPIRV_CROSS_STATIC         "Build the C and C++ API as static libraries." ON)
-    option(SPIRV_CROSS_CLI            "Build the CLI binary. Requires SPIRV_CROSS_STATIC." ON)
-    option(SPIRV_CROSS_ENABLE_TESTS   "Enable SPIRV-Cross tests." ON)
-    option(SPIRV_CROSS_ENABLE_GLSL    "Enable GLSL support." ON)
-    option(SPIRV_CROSS_ENABLE_HLSL    "Enable HLSL target support." ON)
-    option(SPIRV_CROSS_ENABLE_MSL     "Enable MSL target support." ON)
-    option(SPIRV_CROSS_ENABLE_CPP     "Enable C++ target support." ON)
-    option(SPIRV_CROSS_ENABLE_REFLECT "Enable JSON reflection target support." ON)
-    option(SPIRV_CROSS_ENABLE_C_API   "Enable C API wrapper support in static library." ON)
-    option(SPIRV_CROSS_ENABLE_UTIL    "Enable util module support." ON)
-    set(SPIRV_CROSS_STATIC         ON )
-    set(SPIRV_CROSS_SHARED         OFF)
-    set(SPIRV_CROSS_CLI            OFF)
-    set(SPIRV_CROSS_ENABLE_TESTS   OFF)
-    set(SPIRV_CROSS_ENABLE_HLSL    ON)
-    set(SPIRV_CROSS_ENABLE_GLSL    ON)
-    set(SPIRV_CROSS_ENABLE_MSL     OFF)
-    set(SPIRV_CROSS_ENABLE_CPP     OFF)
-    set(SPIRV_CROSS_ENABLE_REFLECT OFF)
-    set(SPIRV_CROSS_ENABLE_C_API   OFF)
-    set(SPIRV_CROSS_ENABLE_UTIL    OFF)
+    set(SPIRV_CROSS_STATIC         ON  CACHE BOOL "Build the C and C++ API as static libraries.")
+    set(SPIRV_CROSS_SHARED         OFF CACHE BOOL "Build the C API as a single shared library.")
+    set(SPIRV_CROSS_CLI            OFF CACHE BOOL "Build the CLI binary. Requires SPIRV_CROSS_STATIC.")
+    set(SPIRV_CROSS_ENABLE_TESTS   OFF CACHE BOOL "Enable SPIRV-Cross tests.")
+    set(SPIRV_CROSS_ENABLE_HLSL    ON  CACHE BOOL "Enable HLSL target support.")
+    set(SPIRV_CROSS_ENABLE_GLSL    ON  CACHE BOOL "Enable GLSL support.") # required for HLSL support
+    set(SPIRV_CROSS_ENABLE_MSL     OFF CACHE BOOL "Enable MSL target support.")
+    set(SPIRV_CROSS_ENABLE_CPP     OFF CACHE BOOL "Enable C++ target support.")
+    set(SPIRV_CROSS_ENABLE_REFLECT OFF CACHE BOOL "Enable JSON reflection target support.")
+    set(SPIRV_CROSS_ENABLE_C_API   OFF CACHE BOOL "Enable C API wrapper support in static library.")
+    set(SPIRV_CROSS_ENABLE_UTIL    OFF CACHE BOOL "Enable util module support.")
     add_subdirectory(SPIRV-Cross)
+
+    set_target_properties(spirv-cross-core spirv-cross-hlsl spirv-cross-glsl uninstall
+        PROPERTIES
+        FOLDER Externals
+    )
 endif()
 
 # DirectX graphics API dependent libraries
