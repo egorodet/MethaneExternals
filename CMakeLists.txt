@@ -40,17 +40,10 @@ add_subdirectory(BoostNowide)
 # TaskFlow library
 set(TF_BUILD_BENCHMARKS OFF CACHE BOOL "Disable TaskFlow benchmarks build")
 set(TF_BUILD_CUDA       OFF CACHE BOOL "Disable TaskFlow CUDA support")
-set(TF_BUILD_SYCL       OFF CACHE BOOL "Disable TaskFlow SYCL support")
 set(TF_BUILD_TESTS      OFF CACHE BOOL "Disable TaskFlow tests build")
 set(TF_BUILD_EXAMPLES   OFF CACHE BOOL "Disable TaskFlow examples build")
-set(TF_BUILD_PROFILER   OFF CACHE BOOL "Disable TaskFlow profiler build")
 add_subdirectory(TaskFlow)
 add_library(TaskFlow ALIAS Taskflow)
-if(MSVC)
-    target_compile_options(Taskflow INTERFACE
-        /wd4456 # declaration of 'lock' hides previous local declaration
-    )
-endif()
 
 # Image loader library: STB or OIIO
 if (METHANE_OPEN_IMAGE_IO_ENABLED)
