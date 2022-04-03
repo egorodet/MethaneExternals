@@ -112,9 +112,6 @@ endif()
 # Tracy instrumentation interface library
 add_library(TracyInstrumentation INTERFACE)
 target_include_directories(TracyInstrumentation INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/Tracy)
-if(MSVC)
-    target_compile_options(TracyInstrumentation INTERFACE /wd4189) # not referenced variable in TracyD3D12.hpp
-endif()
 
 # HLSL++ library
 add_library(HLSLpp INTERFACE)
