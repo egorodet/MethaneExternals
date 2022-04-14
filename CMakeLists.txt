@@ -32,8 +32,8 @@ else()
 endif()
 
 # Nowide library
-set(BUILD_SHARED_LIBS OFF)
-set(BUILD_TESTING OFF)
+set(BUILD_SHARED_LIBS OFF CACHE BOOL "Disable BoostNowide shared libs")
+set(BUILD_TESTING OFF CACHE BOOL "Disable BoostNowide tests")
 set(NOWIDE_INSTALL OFF CACHE BOOL "Disable nowide library installation")
 add_subdirectory(BoostNowide)
 
