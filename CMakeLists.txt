@@ -45,14 +45,6 @@ set(TF_BUILD_EXAMPLES   OFF CACHE BOOL "Disable TaskFlow examples build")
 add_subdirectory(TaskFlow)
 add_library(TaskFlow ALIAS Taskflow)
 
-if(MSVC)
-    target_compile_options(Taskflow INTERFACE
-        /wd4127 # conditional expression is constant (warning in TaskFlow\taskflow\core\algorithm\sort.hpp)
-    )
-else()
-    #target_compile_options(Taskflow INTERFACE -Wno-everything)
-endif()
-
 # Image loader library: STB or OIIO
 if (METHANE_OPEN_IMAGE_IO_ENABLED)
     add_subdirectory(OpenImageIO)
