@@ -44,6 +44,11 @@ set(TF_BUILD_TESTS      OFF CACHE BOOL "Disable TaskFlow tests build")
 set(TF_BUILD_EXAMPLES   OFF CACHE BOOL "Disable TaskFlow examples build")
 add_subdirectory(TaskFlow)
 add_library(TaskFlow ALIAS Taskflow)
+if(MSVC)
+    target_compile_options(Taskflow INTERFACE
+        /wd4456 # declaration of 'lock' hides previous local declaration (taskflow/core/executor.hpp:1842)
+    )
+endif()
 
 # Image loader library: STB or OIIO
 if (METHANE_OPEN_IMAGE_IO_ENABLED)
