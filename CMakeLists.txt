@@ -104,7 +104,7 @@ target_sources(TracyClient INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/Tracy/TracyClie
 if(MSVC)
     target_compile_options(TracyClient INTERFACE /wd4702)
 else()
-    target_compile_options(TracyClient INTERFACE -Wno-error -Wno-unused-parameter -Wunused-but-set-variable -Wno-sign-compare)
+    target_compile_options(TracyClient INTERFACE -Wno-error -Wno-unused-parameter -Wno-unused-but-set-variable -Wno-sign-compare)
 endif()
 
 if(NOT WIN32 AND NOT APPLE AND UNIX) # Linux
