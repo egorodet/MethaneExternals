@@ -11,7 +11,7 @@ add_subdirectory(Catch2)
 add_subdirectory(SPIRV)
 add_subdirectory(DirectXCompiler)
 add_subdirectory(D3DCompilerToDXC)
-add_subdirectory(PerlinNoise)
+add_subdirectory(FastNoise2)
 add_subdirectory(CLI11)
 add_subdirectory(IttApi)
 add_subdirectory(MagicEnum)
@@ -132,7 +132,7 @@ elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU") # GCC
     target_compile_options(HLSLpp INTERFACE -Wno-deprecated-copy)
 endif()
 
-set_target_properties(nowide fmt freetype ittnotify
+set_target_properties(nowide fmt freetype ittnotify FastNoise
     PROPERTIES
     FOLDER Externals
 )

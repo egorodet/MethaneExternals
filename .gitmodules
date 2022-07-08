@@ -47,3 +47,6 @@
 [submodule "SPIRV-Cross"]
 	path = SPIRV-Cross
 	url = https://github.com/egorodet/SPIRV-Cross.git
+[submodule "FastNoise2"]
+	path = FastNoise2
+	url = https://github.com/MethanePowered/FastNoise2.git
