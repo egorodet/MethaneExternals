@@ -20,7 +20,7 @@
 ## Math Libraries
 
 - :green_book: [HLSL++](https://github.com/redorav/hlslpp) - math library using HLSL syntax with SSE/NEON support
-- :blue_book: [FastNoise2](https://github.com/Auburn/FastNoise2) - Modular node graph based noise generation library using SIMD, C++17 and templates
+- :orange_book: [PerlinNoise](http://staffwww.itn.liu.se/~stegu/aqsis/aqsis-newnoise/) - improved Perlin Noise implementation by Stefan Gustavson
 
 ## Parallel Execution
 
