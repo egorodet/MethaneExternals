@@ -1,4 +1,8 @@
 # Methane Externals
+
+> **Warning**
+> This is an **archived repository**, which was previously used for external dependencies of [Methane Kit](https://github.com/MethanePowered/MethaneKit) project in form of submodules, currently migrated to [CPM.cmake](https://github.com/cpm-cmake/CPM.cmake).
+
 [Methane Kit](https://github.com/egorodet/MethaneKit) external libraries and tools in form of:
 - :blue_book: static library sources in Git submodule
 - :green_book: header-only library in Git submodule
